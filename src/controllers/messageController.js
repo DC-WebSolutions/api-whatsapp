@@ -8,10 +8,15 @@ const router = express.Router();
 
 router.post('/push', async (req, res) => {
     try {
-        const data = req.body;
-        res.send(data)
+        const Create = await Message.create({
+            phone: req.body.phone,
+            message: req.body.message,
+            scheduleAt: Date.now()
+        });
+
+        res.send({ Create });
     } catch (err) {
-        console.log(err)
+        return res.status(400).send(err)
     }
 })
 

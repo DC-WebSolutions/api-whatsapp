@@ -6,6 +6,13 @@
 * [Mongodb](https://www.mongodb.com/)
 * [PM2](http://pm2.keymetrics.io/)
 
+## Tecnologias Utilizadas
+
+* NodeJS
+* Mongodb
+* Express
+* Electron
+
 ## Instalação
 
 ```bash
@@ -23,20 +30,31 @@ npm run prod
 
 ## Como usar a API
 
-É uma API simples para o envio de mensagens automaticas, precisa enviar um post no formato json, com as informações abaixo:
+É uma API simples para o envio de mensagens automaticas, precisa ser enviado um post no formato json.
+
+**Para mensagens agendadas**:
 
 ```js
 {
 	"channel": "whmcs",
-	"phone": "5511956007726", // precisa seguir o mesmo exemplo
+	"phone": "5511999999999", // precisa seguir o mesmo exemplo
 	"message": "Teste", // qualquer mensagem
 	"scheduleAt": "2019-09-20 20:00:00" // data e hora do envio
 }
 ```
 
-Atualmente usa o express na porta 3000. Exemplo http://localhost:3000.
+Enviando um post para http://localhost:3000/register/push em formato json, contendo as informações corretas, será gravado no banco de dados mongodb, assim enviando a mensagem na data e hora especificada no "scheduleAt".
 
-Enviando um post para http://localhost:3000 em formato json, contendo as informações corretas, será gravado no banco de dados mongodb, assim enviando a mensagem na data e hora especificada no "scheduleAt".
+**Para mensagens diretas**:
+
+```js
+{
+	"phone": "5511999999999", // precisa seguir o mesmo exemplo
+	"message": "Teste", // qualquer mensagem
+}
+```
+
+Envia um post para http://localhost:3000/push em formato json, contendo as informações corretas.
 
 ## To Do
 
