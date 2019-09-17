@@ -1,0 +1,22 @@
+{
+  "name": "api-whatsapp",
+  "version": "1.0.0",
+  "description": "API para envio de mensagens automaticas para WhatsApp",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "electron .",
+    "prod": "pm2 start api-whatsapp.js"
+  },
+  "repository": "https://github.com/electron/electron-quick-start",
+  "author": "Daniel Costa <daniel.costa@dcwebsolutions.com.br>",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "electron": "^5.0.6"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.6.3",
+    "node-cron": "^2.0.3"
+  }
+}
