@@ -78,7 +78,7 @@ Envia um post para http://localhost:3000/push em formato json, contendo as infor
 
 ## To Do
 
-- [ ] Validações do Número
+- [x] Validações do Número
 - [ ] QRcode via socket.io
 - [ ] Multisessões
 - [ ] Painel Web para envio
