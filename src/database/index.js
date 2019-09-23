@@ -1,13 +1,6 @@
 const mongoose = require('mongoose');
 
-/*
-mongoose.connect('mongodb://sendbot_whatsapp:WA3gFttuCNISatRC@ds247637.mlab.com:47637/sendbot-whatsapp', { 
-    useNewUrlParser: true,
-    useFindAndModify: false
-});
-*/
-
-mongoose.connect('mongodb://localhost/whatsapp', { 
+mongoose.connect(`mongodb://${process.env.MONGO_USER + ':' || ''}${process.env.MONGO_PASS + '@' || ''}${process.env.MONGO_HOST + ':' || 'localhost:'}${process.env.MONGO_PORT || '27017'}/${process.env.MONGO_DB || 'whatsapp'}`, {
     useNewUrlParser: true,
     useFindAndModify: false
 });

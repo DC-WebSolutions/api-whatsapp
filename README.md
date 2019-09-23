@@ -22,6 +22,26 @@ git clone https://github.com/DC-WebSolutions/api-whatsapp
 cd api-whatsapp
 # Instale as dependencias
 npm install
+```
+Configure o banco mongodb nas variaveis dentro do .env
+
+```bash
+# Criar .env
+cp .env.example .env
+```
+
+Exemplo:
+```bash
+MONGO_HOST=NOME_DO_HOST
+MONGO_PORT=SUA_PORTA
+MONGO_USER=SEU_USUÁRIO
+MONGO_PASS=SUA_SENHA
+MONGO_DB=NOME_DO_BANCO
+```
+
+Por fim, execute em modo de desenvolvimento ou produção.
+
+```bash
 # Executar em desenvolvimento
 npm run dev
 # Executar em produção com PM2

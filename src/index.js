@@ -1,3 +1,4 @@
+require('dotenv').config();
 const { app, BrowserWindow, ipcMain } = require('electron');
 const { ObjectId } = require('mongodb');
 const express = require('express');
@@ -112,6 +113,6 @@ app.on('ready', function () {
 
     }
 
-    app.listen(3000);
+    app.listen(process.env.APP_PORT || 3000);
 
 })

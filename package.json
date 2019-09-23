@@ -11,10 +11,12 @@
   "author": "Daniel Costa <daniel.costa@dcwebsolutions.com.br>",
   "license": "GPL-3.0",
   "devDependencies": {
+    "@types/dotenv": "^6.1.1",
     "electron": "^5.0.6"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
+    "dotenv": "^8.1.0",
     "express": "^4.17.1",
     "mongoose": "^5.6.3",
     "node-cron": "^2.0.3"
