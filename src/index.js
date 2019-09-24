@@ -1,10 +1,9 @@
-require('dotenv').config();
 const { app, BrowserWindow, ipcMain } = require('electron');
 const { ObjectId } = require('mongodb');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cron = require('node-cron');
-const Message = require('./models/message');
+const Message = require('./app/models/message');
 
 let mainWindow;
 
@@ -15,7 +14,7 @@ app.on('ready', function () {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
 
-    app.use(require("./controllers/messageController"));
+    app.use(require("./app/controllers/messageController"));
 
     cron.schedule('*/30 * * * * *', CronJob, {
         timezone: 'America/Sao_Paulo'

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const databaseConfig = require('../config/database');
 
-mongoose.connect(`mongodb://${process.env.MONGO_USER + ':' || ''}${process.env.MONGO_PASS + '@' || ''}${process.env.MONGO_HOST + ':' || 'localhost:'}${process.env.MONGO_PORT || '27017'}/${process.env.MONGO_DB || 'whatsapp'}`, {
+mongoose.connect(`mongodb://${databaseConfig.user + ':' || ''}${databaseConfig.pass + '@' || ''}${databaseConfig.host + ':' || 'localhost:'}${databaseConfig.port || '27017'}/${databaseConfig.db || 'whatsapp'}`, {
     useNewUrlParser: true,
     useFindAndModify: false
 });

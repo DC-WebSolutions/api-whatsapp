@@ -1,4 +1,4 @@
-const mongoose = require('../database');
+const mongoose = require('../../database');
 
 const MessageScheme = new mongoose.Schema({
     channel: {
