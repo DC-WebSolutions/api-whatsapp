@@ -63,8 +63,6 @@ npm run prod
 }
 ```
 
-Enviando um post para http://localhost:3000/register/push em formato json, contendo as informações corretas, será gravado no banco de dados mongodb, assim enviando a mensagem na data e hora especificada no "scheduleAt".
-
 **Para mensagens diretas**:
 
 ```js
@@ -75,6 +73,10 @@ Enviando um post para http://localhost:3000/register/push em formato json, conte
 ```
 
 Envia um post para http://localhost:3000/push em formato json, contendo as informações corretas.
+
+**Para listar todas as mensagens**:
+
+Envia um get para http://localhost:3000/messages, que vai listar todas as mensagens enviadas e agendadas.
 
 ## To Do
 

@@ -2,7 +2,7 @@
   "name": "api-whatsapp",
   "version": "1.0.0",
   "description": "API para envio de mensagens automaticas para WhatsApp",
-  "main": "src/index.js",
+  "main": "src/server.js",
   "scripts": {
     "dev": "electron .",
     "prod": "pm2 start api-whatsapp.js"

@@ -2,8 +2,9 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 const { ObjectId } = require('mongodb');
 const express = require('express');
 const bodyParser = require('body-parser');
+const routes = require('./routes');
 const cron = require('node-cron');
-const Message = require('./app/models/message');
+const Message = require('./app/models/Message');
 
 let mainWindow;
 
@@ -13,8 +14,7 @@ app.on('ready', function () {
 
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
-
-    app.use(require("./app/controllers/messageController"));
+    app.use(routes);
 
     cron.schedule('*/30 * * * * *', CronJob, {
         timezone: 'America/Sao_Paulo'
@@ -58,8 +58,8 @@ app.on('ready', function () {
     }
 
     async function CronJob() {
-        const List = await Message.find({ $and: [{ scheduleAt: { $lte: Date.now() } }, { status: { $eq: 'SCHEDULED' } }] }).sort({ createdAt: -1 });
-        for (const list of List) {
+        const lists = await Message.find({ $and: [{ scheduleAt: { $lte: Date.now() } }, { status: { $eq: 'SCHEDULED' } }] }).sort({ createdAt: -1 });
+        for (const list of lists) {
             var id = `'${list._id}'`;
             send(list.phone, list.message, id);
         }
