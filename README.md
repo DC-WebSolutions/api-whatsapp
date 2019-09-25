@@ -12,6 +12,7 @@
 * Mongodb
 * Express
 * Electron
+* Socket.io
 
 ## Instalação
 
@@ -37,6 +38,13 @@ MONGO_PORT=SUA_PORTA
 MONGO_USER=SEU_USUÁRIO
 MONGO_PASS=SUA_SENHA
 MONGO_DB=NOME_DO_BANCO
+```
+
+Caso use apenas como API, fazendo a integração e usando o QRCode via socket.io, mude o APP_QRCODE para false.
+
+Exemplo:
+```bash
+APP_QRCODE=false
 ```
 
 Por fim, execute em modo de desenvolvimento ou produção.
@@ -81,7 +89,7 @@ Envia um get para http://localhost:3000/messages, que vai listar todas as mensag
 ## To Do
 
 - [x] Validações do Número
-- [ ] QRcode via socket.io
+- [x] QRcode via socket.io
 - [ ] Multisessões
 - [ ] Painel Web para envio
 - [ ] Autenticação via Token (API) para os usuários

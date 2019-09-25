@@ -1,4 +1,5 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
+const config = require('./config/app');
 const { ObjectId } = require('mongodb');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -11,6 +12,8 @@ let mainWindow;
 app.on('ready', function () {
 
     const app = express();
+    const server = require('http').Server(app);
+    const io = require('socket.io')(server);
 
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
@@ -32,8 +35,12 @@ app.on('ready', function () {
     //mainWindow.webContents.openDevTools()
 
     ipcMain.on('qr', (event, arg) => {
-        if (arg.qrCode) {
-            mainWindow.show();
+        if (arg.qrcode) {
+            if (config.app_qrcode == 'true') {
+                mainWindow.show();
+            }
+
+            io.emit(config.socket_io, arg);
         }
     });
 
@@ -42,7 +49,11 @@ app.on('ready', function () {
 
         if (arg.status) {
             updateSchedule(arg.id)
-            mainWindow.hide();
+            if (config.app_qrcode == 'true') {
+                mainWindow.hide();
+            }
+
+            io.emit(config.socket_io, false);
         }
 
     });
@@ -82,7 +93,7 @@ app.on('ready', function () {
 
                     if (typeof qrCode !== 'undefined') {
                         document.querySelector('#app > div > div > div.landing-window > div.landing-main > div > div._2yUXW > label > input[type=checkbox]').checked = true;
-                        ipcRenderer.send('qr', {qrCode:true});
+                        ipcRenderer.send('qr', {qrcode:true, img:qrCode});
                     }
                     
                     if (typeof qrCodeLoad !== 'undefined') {
@@ -112,6 +123,6 @@ app.on('ready', function () {
 
     }
 
-    app.listen(process.env.APP_PORT || 3000);
+    server.listen(process.env.APP_PORT || 3000);
 
 })
